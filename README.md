@@ -1,10 +1,12 @@
 # TSPSolver
 分层规划的旅行商问题解决方案，采用分层规划的思想，层层聚类，直至最底层单个城市群数量满足一定阈值，然后利用整数规划求最底层城市群的精确解，单层之间的城市群路径规划同样采用整数规划求精确解，这里的城市群路径规划指的是城市群的聚类中心之间的路径规划，最高层为闭合路径的TSP问题，以下单层包括底层都为确定起点终点的不闭合TSP问题，这里的不闭合TSP问题的起点终点贪心的由上一级城市群聚类中心求出的路径来确定哪两个城市群相邻，并由此计算此相邻城市群的最近子城市群对。  求出近似路径后再进行局部的随机优化。
 
+其中logictest为测试代码，logicimp为主实现代码，optagain为继续优化最底层代码
+
 ---
 
 #分层规划的旅行商问题解决方案
-/*上周在无意间跟室友讨论到TSP问题时，我觉得应该把这个问题整合一下，并给出自己的解决方案，同时代码公布在[github]()，有人做成其他版本的与其他人探讨共同进步。
+/*上周在无意间跟室友讨论到TSP问题时，我觉得应该把这个问题整合一下，并给出自己的解决方案，，有人做成其他版本的与其他人探讨共同进步。
 无特别说明情况下，聚类指的是kmeans聚类*/
 
 ##摘要
@@ -32,13 +34,13 @@
 3. 单层之间的城市群路径规划同样采用整数规划求精确解，这里的城市群路径规划指的是城市群的聚类中心之间的路径规划。
 
 对于Top层如下图所示求闭合路径
-<p style="text-align:center"><img src="Top.png" width = "500" height = "400"></p>
+<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/Top.png" width = "500" height = "400"></p>
 对于非top层，实则为确定起点终点的聚类中心之间的路径规划，如下图。
-<p style="text-align:center"><img src="1.png" width = "500" height = "400"></p>
-<p style="text-align:center"><img src="2.png" width = "500" height = "400"></p>
+<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/1.png" width = "500" height = "400"></p>
+<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/2.png" width = "500" height = "400"></p>
 
 对于子层，如果满足子层节点中城市数量不超过一定阈值（整数规划求精确解时间允许的城市数量），则不进行分裂，直接将其进入下一层。
-<p style="text-align:center"><img src="3.png" width = "500" height = "400"></p>
+<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/3.png" width = "500" height = "400"></p>
 
 
 
@@ -148,10 +150,12 @@ end
 ##实验
 在tsplib数据集上的测试（我们只测试个大规模的），与精确解稳定在10%的损失，不逊于一般论文的方法的测试结果！
 
-数据集名字1 | 最优解 | 本文得到的解   | 比例|
+数据集名字1 | 最优解 | 本文得到的解   | 比例
 ------- | ------- | -------   | ------- 
-ja9847| 491924 | 561460 | 0.8762
-![testja9847](pic/jp.png)
+ ja9847| 491924 | 561460 | 0.8762
+
+
+![testja9847](https://github.com/yifannir/TSPSolver/edit/master/pic/jp.png)
 
 
 
