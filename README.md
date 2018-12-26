@@ -6,8 +6,7 @@
 ---
 
 #分层规划的旅行商问题解决方案
-/*上周在无意间跟室友讨论到TSP问题时，我觉得应该把这个问题整合一下，并给出自己的解决方案，，有人做成其他版本的与其他人探讨共同进步。
-无特别说明情况下，聚类指的是kmeans聚类*/
+
 
 ##摘要
 本文采用分层规划的思想，层层聚类，直至最底层单个城市群数量满足一定阈值，然后利用整数规划求最底层城市群的精确解，单层之间的城市群路径规划同样采用整数规划求精确解，这里的城市群路径规划指的是城市群的聚类中心之间的路径规划，最高层为闭合路径的TSP问题，以下单层包括底层都为确定起点终点的不闭合TSP问题，这里的不闭合TSP问题的起点终点贪心的由上一级城市群聚类中心求出的路径来确定哪两个城市群相邻，并由此计算此相邻城市群的最近子城市群对。
@@ -32,16 +31,6 @@
 2. 最高层为闭合路径的TSP问题，以下单层包括底层都为确定起点终点的不闭合TSP问题，这里的不闭合TSP问题的起点终点贪心的由上一级城市群聚类中心求出的路径来确定哪两个城市群相邻，并由此计算此相邻城市群的最近子城市群对。
 
 3. 单层之间的城市群路径规划同样采用整数规划求精确解，这里的城市群路径规划指的是城市群的聚类中心之间的路径规划。
-
-对于Top层如下图所示求闭合路径
-![image](https://github.com/yifannir/TSPSolver/tree/master/pic/Top.png)
-对于非top层，实则为确定起点终点的聚类中心之间的路径规划，如下图。
-![image](https://github.com/yifannir/TSPSolver/tree/master/pic/1.png)
-![image](https://github.com/yifannir/TSPSolver/tree/master/pic/2.png)
-
-对于子层，如果满足子层节点中城市数量不超过一定阈值（整数规划求精确解时间允许的城市数量），则不进行分裂，直接将其进入下一层。
-<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/3.png" width = "500" height = "400"></p>
-
 
 
 
@@ -155,7 +144,7 @@ end
  ja9847| 491924 | 561460 | 0.8762
 
 
-![image](https://github.com/yifannir/TSPSolver/tree/master/pic/3.png)
+参考博文(https://yq.aliyun.com/articles/682768?spm=a2c4e.11155435.0.0.2f353312fFrEDV)
 
 
 
