@@ -34,10 +34,10 @@
 3. 单层之间的城市群路径规划同样采用整数规划求精确解，这里的城市群路径规划指的是城市群的聚类中心之间的路径规划。
 
 对于Top层如下图所示求闭合路径
-<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/Top.png" width = "500" height = "400"></p>
+![image](https://github.com/yifannir/TSPSolver/tree/master/pic/Top.png)
 对于非top层，实则为确定起点终点的聚类中心之间的路径规划，如下图。
-<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/1.png" width = "500" height = "400"></p>
-<p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/2.png" width = "500" height = "400"></p>
+![image](https://github.com/yifannir/TSPSolver/tree/master/pic/1.png)
+![image](https://github.com/yifannir/TSPSolver/tree/master/pic/2.png)
 
 对于子层，如果满足子层节点中城市数量不超过一定阈值（整数规划求精确解时间允许的城市数量），则不进行分裂，直接将其进入下一层。
 <p style="text-align:center"><img src="https://github.com/yifannir/TSPSolver/edit/master/pic/3.png" width = "500" height = "400"></p>
@@ -155,7 +155,7 @@ end
  ja9847| 491924 | 561460 | 0.8762
 
 
-![testja9847](https://github.com/yifannir/TSPSolver/edit/master/pic/jp.png)
+![image](https://github.com/yifannir/TSPSolver/tree/master/pic/3.png)
 
 
 
